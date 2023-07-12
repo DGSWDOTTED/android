@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="dgsw.kr.dotted.detail.view.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="dgsw.kr.dotted.map.view.MapFragment"
+        android:label="MapFragment" />
 </navigation>

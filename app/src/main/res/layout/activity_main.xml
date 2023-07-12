@@ -6,24 +6,17 @@
     android:layout_height="match_parent"
     tools:context="dgsw.kr.dotted.home.view.MainActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_left"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.03"
-        android:orientation="vertical"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph"
         />
 
-    <ScrollView
-        android:id="@+id/sv_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="@id/gl_left">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DOTTED가 추천하는 회사에요!"
-            />
-
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
