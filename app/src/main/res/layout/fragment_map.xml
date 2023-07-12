@@ -1,0 +1,81 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="dgsw.kr.dotted.map.view.MapFragment">
+
+        <com.naver.maps.map.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <TextView
+            android:id="@+id/search_edtxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/bg_search_box_radius"
+
+            android:hint="주소를 검색해주세요"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="@color/black"
+            android:textColorHint="@color/main_blue"
+            android:paddingVertical="17dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:paddingHorizontal="20dp"
+            />
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_search"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_edtxt"
+            app:layout_constraintEnd_toEndOf="@+id/search_edtxt"
+            app:layout_constraintTop_toTopOf="@+id/search_edtxt" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/company_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_map_company"
+            android:layout_marginBottom="15dp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/map_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/location_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_location_btn"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/company_recyclerview"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
