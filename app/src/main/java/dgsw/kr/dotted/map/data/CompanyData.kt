@@ -1,6 +1,6 @@
 package dgsw.kr.dotted.map.data
 
-data class CompanyData(
+data class MapCompanyData(
 
 
     val com_name : String,

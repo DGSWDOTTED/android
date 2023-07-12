@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.WindowManager
 import dgsw.kr.dotted.R
 
+
 class SplashActivity : AppCompatActivity() {
     private val SPLASH_DELAY: Long = 2000 // 스플래시 화면이 표시될 시간(2초로 설정)
 
