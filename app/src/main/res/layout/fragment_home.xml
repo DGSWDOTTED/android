@@ -34,14 +34,46 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/search_edtxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/bg_search_box_radius"
+
+                    android:hint="주소를 검색해주세요"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/main_blue"
+                    android:paddingVertical="17dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_text_logo"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="20dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/search_btn"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/ic_search"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/search_edtxt"
+                    app:layout_constraintEnd_toEndOf="@+id/search_edtxt"
+                    app:layout_constraintTop_toTopOf="@+id/search_edtxt" />
+
+                <TextView
                     android:id="@+id/tv_recommend_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DOTTED가 추천한 회사에요!"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="@id/gl_left"
-                    app:layout_constraintTop_toBottomOf="@id/iv_text_logo" />
+                    app:layout_constraintTop_toBottomOf="@id/search_edtxt" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_recommand_company"

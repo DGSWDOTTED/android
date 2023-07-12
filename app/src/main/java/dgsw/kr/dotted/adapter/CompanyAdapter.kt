@@ -47,6 +47,7 @@ class CompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapt
     override fun action(item: CompanyData, binding: ItemVerticalCompanyBinding) {
         binding.tvTitle.text = item.name
         binding.tvAddress.text = item.address
+        binding.ivLogo.clipToOutline = true
         val imageIdx = item.idx +123456 % profileImgList.size
         binding.ivLogo.setImageResource(profileImgList[imageIdx])
         binding.root.setOnClickListener { onClick(item) }

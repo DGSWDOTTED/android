@@ -45,6 +45,7 @@ class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : Base
     override fun action(item: CompanyData, binding: ItemHorizontalCompanyBinding) {
         binding.tvTitle.text = item.name
         binding.tvAddress.text = item.address
+        binding.ivLogo.clipToOutline = true
         val iamgeIdx = item.idx +123456 % profileImgList.size
         binding.ivLogo.setImageResource(profileImgList[iamgeIdx])
 
