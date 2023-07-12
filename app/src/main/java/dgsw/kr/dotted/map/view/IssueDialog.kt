@@ -11,13 +11,18 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.WindowManager
 import dgsw.kr.dotted.databinding.DialogIssueBinding
+import dgsw.kr.dotted.home.data.Company
+import dgsw.kr.dotted.local.DB.CompanyEntity
 import java.time.LocalDate
 
-class IssueDialog(private val context : Context) {
+class IssueDialog(private val context : Context, company : CompanyEntity) {
 
     private lateinit var binding : DialogIssueBinding
     private val dialog = Dialog(context)
     private lateinit var onClickListener: OnDialogClickListener
+
+    val company = company
+
 
     fun setOnClicklistener(listener : OnDialogClickListener){
         onClickListener = listener
@@ -30,7 +35,12 @@ class IssueDialog(private val context : Context) {
         dialog.setContentView(binding.root)
         dialog.show()
 
-        context.dialogResize(dialog,0.9F,0.15F)
+        binding.nameTxt.text = company.companyTitle
+        binding.addressTxt.text = company.address
+        binding.infoTxt.text = company.jobType
+
+
+        context.dialogResize(dialog,0.9F,0.13F)
         dialog.getWindow()!!.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         dialog.window!!.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT))
         val params = dialog.window!!.attributes

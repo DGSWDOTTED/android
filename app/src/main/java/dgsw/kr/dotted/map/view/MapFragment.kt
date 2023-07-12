@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ import dgsw.kr.dotted.R
 import dgsw.kr.dotted.adapter.MapCompanyAdapter
 import dgsw.kr.dotted.base.BaseFragment
 import dgsw.kr.dotted.databinding.FragmentMapBinding
+import dgsw.kr.dotted.detail.vm.SharedViewModel
 import dgsw.kr.dotted.local.DB.CompanyDatabase
 import dgsw.kr.dotted.local.DB.CompanyEntity
 import dgsw.kr.dotted.map.vm.MapViewModel
@@ -32,9 +34,47 @@ import kotlinx.coroutines.launch
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
     override val viewModel: MapViewModel by viewModels()
+    private val sharedViewModel : SharedViewModel by activityViewModels()
+
 
     val mapCompanyAdapter = MapCompanyAdapter {
-        findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
+
+        var company = it
+        var marker = markerList.filter { it.position.latitude == company.y.toDouble() && it.position.longitude == company.x.toDouble() }
+
+
+        val cameraUpdate = CameraUpdate.scrollAndZoomTo( LatLng(it.y.toDouble(),it.x.toDouble()), 18.0 )
+            .animate(CameraAnimation.Linear,600)
+            .finishCallback {
+
+                val dialog = IssueDialog(requireContext(),it)
+                dialog.showDialog()
+
+                marker[0].height = 400
+                marker[0].width = 335
+
+                dialog.setOnClicklistener(object : IssueDialog.OnDialogClickListener{
+
+                    override fun onClicked() {
+
+                        val action = R.id.action_mapFragment_to_detailFragment
+                        findNavController().navigate(action)
+
+                    }
+
+                    override fun onDismissed() {
+                        Log.d("최희건", "$marker")
+
+                        marker[0].height = 180
+                        marker[0].width = 150
+
+                    }
+                })
+
+            }
+
+        viewModel.naverMap.moveCamera(cameraUpdate)
+
     }
 
 //    val mapCompanyAdapter : MapCompanyAdpater by lazy { MapCompanyAdpater() }
@@ -98,12 +138,15 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
                     .animate(CameraAnimation.Linear,600)
                     .finishCallback {
 
-                        val dialog = IssueDialog(requireContext())
+                        val dialog = IssueDialog(requireContext(),i)
                         dialog.showDialog()
 
                         dialog.setOnClicklistener(object : IssueDialog.OnDialogClickListener{
 
                             override fun onClicked() {
+
+                                sharedViewModel.id = i.id
+                                findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
 
                             }
 

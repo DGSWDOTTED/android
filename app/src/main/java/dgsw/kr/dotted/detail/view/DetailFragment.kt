@@ -1,61 +1,54 @@
 package dgsw.kr.dotted.detail.view
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import dgsw.kr.dotted.R
+import dgsw.kr.dotted.base.BaseFragment
 import dgsw.kr.dotted.databinding.FragmentDetailBinding
+import dgsw.kr.dotted.detail.vm.DetailViewModel
+import dgsw.kr.dotted.detail.vm.SharedViewModel
+import dgsw.kr.dotted.local.DB.CompanyDatabase
+import dgsw.kr.dotted.local.DB.CompanyEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+class DetailFragment() : BaseFragment<FragmentDetailBinding,DetailViewModel>(R.layout.fragment_detail){
 
-class DetailFragment() : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var name: String? = null
-    private var address: String? = null
-    private var profileImage: Int = R.drawable.ic_company
-    private var major = null
-    private var pay = null
-    private var companyType: String? = null
-    private var employmentType = null
-    private var charge = null
+    override val viewModel: DetailViewModel by viewModels()
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
-    private lateinit var binding: FragmentDetailBinding
+    lateinit var database : CompanyDatabase
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun start() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
-        binding.companyName.setText(name)
-        binding.companyAddress.setText(address)
-        binding.companyPicture.setBackgroundResource(profileImage)
-        binding.companyPayType.setText(major)
-        binding.companyPay.setText(pay)
-        binding.companyScale.setText(companyType)
-        binding.companyRole.setText(employmentType)
-        binding.companyMaster.setText(charge)
-
-        binding.backTo.setOnClickListener {
-
+        binding.backTo.setOnClickListener{
+            findNavController().popBackStack()
         }
 
-        return binding.root
+        database = CompanyDatabase.getInstance(requireContext().applicationContext)!!
+
+        lifecycleScope.launch(Dispatchers.IO) {
+
+            val company = database.companyDao().getCompanyById(sharedViewModel.id)
+
+            launch(Dispatchers.Main) {
+                binding.companyAddress.text = company.address
+                binding.companyMaster.text = company.charge
+                binding.companyName.text = company.companyTitle
+                binding.companyPay.text = company.pay
+                binding.companyPayType.text = company.payType
+                binding.companyRole.text = company.employ
+                binding.companyScale.text = company.companyType
+
+            }
+        }
 
 
     }
+
+
 }

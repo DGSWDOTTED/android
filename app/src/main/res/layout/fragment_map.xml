@@ -29,6 +29,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/main_blue"
             android:paddingVertical="17dp"
+            android:textSize="16dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

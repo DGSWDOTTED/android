@@ -23,11 +23,7 @@
         android:id="@+id/detailFragment"
         android:name="dgsw.kr.dotted.detail.view.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
-        <argument
-            android:name="Company"
-            app:argType="dgsw.kr.dotted.home.data.CompanyData" />
-    </fragment>
+        tools:layout="@layout/fragment_detail" />
 
     <fragment
         android:id="@+id/mapFragment"
