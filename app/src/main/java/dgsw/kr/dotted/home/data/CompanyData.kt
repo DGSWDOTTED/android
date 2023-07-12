@@ -1,7 +1,12 @@
 package dgsw.kr.dotted.home.data
 
-data class CompanyData(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+open class CompanyData(
+    val idx: Int,
     val name : String,
     val address : String,
     val employ : String,
-)
+) : Parcelable

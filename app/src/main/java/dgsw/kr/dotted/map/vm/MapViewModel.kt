@@ -5,7 +5,7 @@ import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.util.FusedLocationSource
-import dgsw.kr.dotted.adapter.MapCompanyAdpater
+import dgsw.kr.dotted.adapter.MapCompanyAdapter
 import dgsw.kr.dotted.base.BaseViewModel
 import dgsw.kr.dotted.map.data.CompanyData
 
@@ -22,8 +22,6 @@ class MapViewModel :BaseViewModel() {
         90.0, // 기울임 각도
         0.0 // 베어링 각도
     )
-
-    val mapCompanyAdapter : MapCompanyAdpater by lazy { MapCompanyAdpater() }
 
     val mapCompanyList = mutableListOf<CompanyData>().apply {
         add(CompanyData("사회적협동조합 가온누리 보호작업장","충청남도 천안시 서북구 백석공단1로 10 지하1층 지원비 138호 (백석동)","기타 전자 부품·제품 조립·검사원"))

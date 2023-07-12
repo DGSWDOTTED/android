@@ -5,7 +5,7 @@ import dgsw.kr.dotted.base.BaseListAdapter
 import dgsw.kr.dotted.databinding.ItemHorizontalCompanyBinding
 import dgsw.kr.dotted.home.data.CompanyData
 
-class RecommendCompanyAdapter : BaseListAdapter<CompanyData, ItemHorizontalCompanyBinding>(
+class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemHorizontalCompanyBinding>(
     R.layout.item_horizontal_company
 ) {
     val profileImgList: List<Int> = listOf(
@@ -45,8 +45,10 @@ class RecommendCompanyAdapter : BaseListAdapter<CompanyData, ItemHorizontalCompa
     override fun action(item: CompanyData, binding: ItemHorizontalCompanyBinding) {
         binding.tvTitle.text = item.name
         binding.tvAddress.text = item.address
-        val randomNumber = (0 .. profileImgList.size-1).random()
-        binding.ivLogo.setImageResource(profileImgList[randomNumber])
+        val iamgeIdx = item.idx +123456 % profileImgList.size
+        binding.ivLogo.setImageResource(profileImgList[iamgeIdx])
+
+        binding.root.setOnClickListener { onClick(item) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {

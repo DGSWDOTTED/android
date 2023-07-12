@@ -1,20 +1,27 @@
 package dgsw.kr.dotted.map.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.util.FusedLocationSource
 import dgsw.kr.dotted.R
+import dgsw.kr.dotted.adapter.MapCompanyAdapter
 import dgsw.kr.dotted.base.BaseFragment
 import dgsw.kr.dotted.databinding.FragmentMapBinding
 import dgsw.kr.dotted.map.vm.MapViewModel
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
     override val viewModel: MapViewModel by viewModels()
+    @SuppressLint("ResourceType")
+    val mapCompanyAdapter = MapCompanyAdapter {
+        findNavController().navigate(R.layout.fragment_detail)
+    }
 
     override fun start() {
 
@@ -27,11 +34,9 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         binding.companyRecyclerview.apply {
 
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-            adapter = viewModel.mapCompanyAdapter
+            adapter = mapCompanyAdapter
         }
-
-        viewModel.mapCompanyAdapter.submitList(viewModel.mapCompanyList)
-
+        mapCompanyAdapter.submitList(viewModel.mapCompanyList)
     }
 
     override fun onMapReady(naverMap: NaverMap) {

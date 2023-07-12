@@ -7,12 +7,14 @@ import dgsw.kr.dotted.base.BaseListAdapter
 import dgsw.kr.dotted.databinding.ItemMapCompanyBinding
 import dgsw.kr.dotted.map.data.CompanyData
 
-class MapCompanyAdpater : BaseListAdapter<CompanyData,ItemMapCompanyBinding>(R.layout.item_map_company){
+class MapCompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData,ItemMapCompanyBinding>(R.layout.item_map_company){
 
     override fun action(data: CompanyData, binding: ItemMapCompanyBinding) {
         binding.addressTxt.text = data.address
         binding.infoTxt.text = data.employ
         binding.nameTxt.text = data.com_name
+
+        binding.root.setOnClickListener { onClick(data) }
 
     }
 

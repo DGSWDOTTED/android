@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import dgsw.kr.dotted.R
 import dgsw.kr.dotted.base.BaseListAdapter
-import dgsw.kr.dotted.databinding.ItemHorizontalCompanyBinding
 import dgsw.kr.dotted.databinding.ItemVerticalCompanyBinding
 import dgsw.kr.dotted.home.data.CompanyData
 
-class CompanyAdapter : BaseListAdapter<CompanyData, ItemVerticalCompanyBinding>(
+class CompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemVerticalCompanyBinding>(
     R.layout.item_vertical_company
 ) {
     val profileImgList: List<Int> = listOf(
@@ -44,11 +43,14 @@ class CompanyAdapter : BaseListAdapter<CompanyData, ItemVerticalCompanyBinding>(
         R.drawable.img_company29,
         R.drawable.img_company30,
     )
+
     override fun action(item: CompanyData, binding: ItemVerticalCompanyBinding) {
         binding.tvTitle.text = item.name
         binding.tvAddress.text = item.address
-        val randomNumber = (0 .. profileImgList.size-1).random()
-        binding.ivLogo.setImageResource(profileImgList[randomNumber])
+        val imageIdx = item.idx +123456 % profileImgList.size
+        binding.ivLogo.setImageResource(profileImgList[imageIdx])
+        binding.root.setOnClickListener { onClick(item) }
+        binding.tvEmploy.text = item.employ
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {

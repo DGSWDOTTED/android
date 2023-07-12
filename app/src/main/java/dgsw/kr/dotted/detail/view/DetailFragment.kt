@@ -30,9 +30,6 @@ class DetailFragment() : Fragment() {
     private var employmentType = null
     private var charge = null
 
-
-
-
     private lateinit var binding: FragmentDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +41,6 @@ class DetailFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-
-
         binding.companyName.setText(name)
         binding.companyAddress.setText(address)
         binding.companyPicture.setBackgroundResource(profileImage)

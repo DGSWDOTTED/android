@@ -23,25 +23,6 @@ class SearchFragment : Fragment() {
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // 검색어 제출 이벤트 처리
-                return true
-
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                // 검색어 변경 이벤트 처리
-
-
-                // 필터링된 결과를 사용하여 추천 검색어 목록을 업데이트하는 로직 구현
-                val recommendationList = filteredList.take(5) // 상위 5개의 추천 검색어만 사용하도록 제한
-                updateRecommendationList(recommendationList)
-
-                return true
-            }
-        })
-
         return binding.root
     }
     private fun updateRecommendationList(recommendations: List<String>) {
