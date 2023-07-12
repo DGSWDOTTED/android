@@ -8,6 +8,10 @@ android {
     namespace 'dgsw.kr.dotted'
     compileSdk 33
 
+    dataBinding{
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "dgsw.kr.dotted"
         minSdk 33
