@@ -18,5 +18,4 @@ data class Company(
     val charge: String,
     val uploadDate: String,
     val phoneNumber: String,
-    val profileImage: String
     )

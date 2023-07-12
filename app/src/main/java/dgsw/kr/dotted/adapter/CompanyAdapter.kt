@@ -1,12 +1,14 @@
+package dgsw.kr.dotted.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import dgsw.kr.dotted.R
 import dgsw.kr.dotted.base.BaseListAdapter
-import dgsw.kr.dotted.databinding.ItemHorizontalCompanyBinding
+import dgsw.kr.dotted.databinding.ItemVerticalCompanyBinding
 import dgsw.kr.dotted.home.data.CompanyData
 
-class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemHorizontalCompanyBinding>(
-    R.layout.item_horizontal_company
+class CompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemVerticalCompanyBinding>(
+    R.layout.item_vertical_company
 ) {
     val profileImgList: List<Int> = listOf(
         R.drawable.img_company0,
@@ -42,16 +44,16 @@ class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : Base
         R.drawable.img_company30,
     )
 
-    override fun action(item: CompanyData, binding: ItemHorizontalCompanyBinding) {
+    override fun action(item: CompanyData, binding: ItemVerticalCompanyBinding) {
         binding.tvTitle.text = item.name
         binding.tvAddress.text = item.address
-        val iamgeIdx = item.idx +123456 % profileImgList.size
-        binding.ivLogo.setImageResource(profileImgList[iamgeIdx])
-
+        val imageIdx = item.idx +123456 % profileImgList.size
+        binding.ivLogo.setImageResource(profileImgList[imageIdx])
         binding.root.setOnClickListener { onClick(item) }
+        binding.tvEmploy.text = item.employ
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return BaseViewHolder(ItemHorizontalCompanyBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return BaseViewHolder(ItemVerticalCompanyBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 }

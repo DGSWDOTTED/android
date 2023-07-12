@@ -1,27 +1,35 @@
 package dgsw.kr.dotted.home.view
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import RecommendCompanyAdapter
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import dgsw.kr.dotted.R
+import dgsw.kr.dotted.adapter.CompanyAdapter
+import dgsw.kr.dotted.base.BaseFragment
+import dgsw.kr.dotted.databinding.FragmentHomeBinding
+import dgsw.kr.dotted.home.vm.homeViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>(R.layout.fragment_home) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override val viewModel: homeViewModel by viewModels()
+    override fun start() {
+
+
+        val companyAdapter = CompanyAdapter {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(viewModel.mapCompanyList[it.idx])
+            findNavController().navigate(action)
+        }
+        val recommendCompanyAdapter = RecommendCompanyAdapter {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(viewModel.mapCompanyList[it.idx])
+            findNavController().navigate(action)
+        }
+        binding.rvCompany.adapter = companyAdapter
+        binding.rvCompany.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        binding.rvRecommandCompany.adapter = recommendCompanyAdapter
+        binding.rvRecommandCompany.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        recommendCompanyAdapter.submitList(viewModel.mapCompanyList)
+        companyAdapter.submitList(viewModel.mapCompanyList)
     }
 
 }
