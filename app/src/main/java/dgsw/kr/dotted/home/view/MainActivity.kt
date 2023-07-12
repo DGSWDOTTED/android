@@ -1,31 +1,36 @@
 package dgsw.kr.dotted.home.view
 
 import android.os.Bundle
-<<<<<<< HEAD
 import android.util.Log
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import androidx.room.Room
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.opencsv.CSVReader
 import dgsw.kr.dotted.R
-import dgsw.kr.dotted.local.DB.CompanyDao
+import dgsw.kr.dotted.databinding.ActivityMainBinding
 import dgsw.kr.dotted.local.DB.CompanyDatabase
 import dgsw.kr.dotted.local.DB.CompanyEntity
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var database : CompanyDatabase
+    private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.navBottom.background = null
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        binding.navBottom.setupWithNavController(navHostFragment.findNavController())
 
         database = CompanyDatabase.getInstance(applicationContext)!!
 
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         for (content in allContent) {
             val sb = StringBuilder("")
 
-            Log.d("데이터","${content[0]}")
+            //Log.d("데이터","${content[0]}")
             lifecycleScope.launch(Dispatchers.IO) {
                 database.companyDao().insert(
                     CompanyEntity(
@@ -71,25 +76,3 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-=======
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
-import dgsw.kr.dotted.R
-import dgsw.kr.dotted.databinding.ActivityMainBinding
-
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.navBottom.background = null
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        binding.navBottom.setupWithNavController(navHostFragment.findNavController())
-    }
-}
->>>>>>> master

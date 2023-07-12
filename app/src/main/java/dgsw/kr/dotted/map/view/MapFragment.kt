@@ -1,24 +1,12 @@
 package dgsw.kr.dotted.map.view
 
-<<<<<<< HEAD
 import android.content.Context
-import android.content.Context.LOCATION_SERVICE
-import android.location.LocationManager
-=======
-import android.annotation.SuppressLint
->>>>>>> master
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
-<<<<<<< HEAD
-import android.view.View
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-=======
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
->>>>>>> master
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraAnimation
@@ -44,14 +32,16 @@ import kotlinx.coroutines.launch
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
     override val viewModel: MapViewModel by viewModels()
-    @SuppressLint("ResourceType")
+
     val mapCompanyAdapter = MapCompanyAdapter {
-        findNavController().navigate(R.layout.fragment_detail)
+        findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
     }
+
+//    val mapCompanyAdapter : MapCompanyAdpater by lazy { MapCompanyAdpater() }
+
 
     lateinit var mapCompanyList : List<CompanyEntity>
     var markerList = mutableListOf<Marker>()
-    private lateinit var mapView: MapView
 
     lateinit var database : CompanyDatabase
     override fun start() {
@@ -62,9 +52,9 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
 
         lifecycleScope.launch(Dispatchers.IO) {
             mapCompanyList = database.companyDao().getAllCompany()
-
-            viewModel.mapCompanyAdapter.submitList(mapCompanyList)
-
+            launch(Dispatchers.Main) {
+                mapCompanyAdapter.submitList(mapCompanyList)
+            }
         }
 
         binding.mapView.getMapAsync(this)
@@ -77,7 +67,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
             adapter = mapCompanyAdapter
         }
-<<<<<<< HEAD
 
         Log.d("도티드","start - ${viewModel.locationSource.lastLocation}")
 
@@ -88,7 +77,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
 
         for (i in mapCompanyList){
 
-            Log.d("도티드", "${i.x.toDouble()} ${i.y.toDouble()}")
+            //Log.d("도티드", "${i.x.toDouble()} ${i.y.toDouble()}")
             val marker = Marker()
             marker.isIconPerspectiveEnabled = true
             marker.position = LatLng(i.y.toDouble(),i.x.toDouble())
@@ -137,9 +126,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             markerList.add(marker)
         }
 
-=======
-        mapCompanyAdapter.submitList(viewModel.mapCompanyList)
->>>>>>> master
     }
 
     override fun onMapReady(naverMap: NaverMap) {
