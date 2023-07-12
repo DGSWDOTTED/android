@@ -25,22 +25,23 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="12451000" />
-
         <activity
-            android:name="dgsw.kr.dotted.home.view.SplashActivity"
+            android:name=".search.view.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.view.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
-
+      
     </application>
 
 </manifest>
