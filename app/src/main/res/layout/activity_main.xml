@@ -32,7 +32,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_recommand_company"
+                android:id="@+id/tv_recommend_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DOTTED가 추천한 회사에요!"
@@ -44,7 +44,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recommand_company"
-                app:layout_constraintTop_toBottomOf="@id/tv_recommand_company"
+                app:layout_constraintTop_toBottomOf="@id/tv_recommend_company"
                 app:layout_constraintStart_toStartOf="@id/gl_left"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
