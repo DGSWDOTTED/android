@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services' version '4.3.15' apply false
 }
 
 android {
@@ -35,6 +36,9 @@ android {
         jvmTarget = '1.8'
     }
     dataBinding{
+        enabled = "true"
+    }
+    viewBinding{
         enabled = "true"
     }
 }
