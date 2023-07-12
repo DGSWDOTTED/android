@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'toss.next.myapplication'
+    namespace 'dgsw.hs.dotted'
     compileSdk 33
 
     defaultConfig {
-        applicationId "toss.next.myapplication"
+        applicationId "dgsw.hs.dotted"
         minSdk 33
         targetSdk 33
         versionCode 1

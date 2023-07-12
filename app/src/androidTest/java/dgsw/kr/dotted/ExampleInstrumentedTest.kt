@@ -1,4 +1,4 @@
-package dgsw.kr.myapplication
+package dgsw.kr.dotted
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

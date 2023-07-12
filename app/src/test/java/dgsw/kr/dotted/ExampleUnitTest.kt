@@ -1,4 +1,4 @@
-package dgsw.kr.myapplication
+package dgsw.kr.dotted
 
 import org.junit.Test
 
