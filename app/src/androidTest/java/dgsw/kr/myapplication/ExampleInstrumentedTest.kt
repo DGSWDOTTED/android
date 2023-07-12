@@ -1,4 +1,4 @@
-package toss.next.myapplication
+package dgsw.kr.myapplication
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

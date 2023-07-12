@@ -1,4 +1,4 @@
-package toss.next.myapplication
+package dgsw.kr.myapplication
 
 import org.junit.Test
 

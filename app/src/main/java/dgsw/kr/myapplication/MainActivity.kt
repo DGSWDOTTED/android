@@ -1,7 +1,8 @@
-package toss.next.myapplication
+package dgsw.kr.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import toss.next.myapplication.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
