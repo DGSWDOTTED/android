@@ -23,4 +23,8 @@ interface CompanyDao {
 
     @Query("SELECT * from Company WHERE id == :id")
     suspend fun getCompanyById(id : String) : CompanyEntity
+
+    @Query("SELECT * from Company ORDER BY (ABS(:x-x) + ABS(:y-y))")
+    suspend fun getCompanySortedByXY(x : Double,y : Double) : List<CompanyEntity>
+
 }

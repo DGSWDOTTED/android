@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_homeFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
       
     <fragment
@@ -31,6 +34,19 @@
         android:label="MapFragment" >
         <action
             android:id="@+id/action_mapFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/anim_down_first"
+            app:popExitAnim="@anim/anim_up_before" />
+        <action
+            android:id="@+id/action_mapFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="dgsw.kr.dotted.search.view.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 

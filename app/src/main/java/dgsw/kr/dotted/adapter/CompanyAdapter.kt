@@ -6,8 +6,9 @@ import dgsw.kr.dotted.R
 import dgsw.kr.dotted.base.BaseListAdapter
 import dgsw.kr.dotted.databinding.ItemVerticalCompanyBinding
 import dgsw.kr.dotted.home.data.CompanyData
+import dgsw.kr.dotted.local.DB.CompanyEntity
 
-class CompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemVerticalCompanyBinding>(
+class CompanyAdapter(private val onClick: (CompanyEntity) -> Unit) : BaseListAdapter<CompanyEntity, ItemVerticalCompanyBinding>(
     R.layout.item_vertical_company
 ) {
     val profileImgList: List<Int> = listOf(
@@ -44,14 +45,14 @@ class CompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapt
         R.drawable.img_company30,
     )
 
-    override fun action(item: CompanyData, binding: ItemVerticalCompanyBinding) {
-        binding.tvTitle.text = item.name
+    override fun action(item: CompanyEntity, binding: ItemVerticalCompanyBinding) {
+        binding.tvTitle.text = item.companyTitle
         binding.tvAddress.text = item.address
         binding.ivLogo.clipToOutline = true
-        val imageIdx = item.idx +123456 % profileImgList.size
+        val imageIdx = (item.id.toInt()+123456 )% profileImgList.size
         binding.ivLogo.setImageResource(profileImgList[imageIdx])
         binding.root.setOnClickListener { onClick(item) }
-        binding.tvEmploy.text = item.employ
+        binding.tvEmploy.text = item.jobType
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {

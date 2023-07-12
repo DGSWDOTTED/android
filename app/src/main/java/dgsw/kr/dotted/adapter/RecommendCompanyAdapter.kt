@@ -4,8 +4,9 @@ import dgsw.kr.dotted.R
 import dgsw.kr.dotted.base.BaseListAdapter
 import dgsw.kr.dotted.databinding.ItemHorizontalCompanyBinding
 import dgsw.kr.dotted.home.data.CompanyData
+import dgsw.kr.dotted.local.DB.CompanyEntity
 
-class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : BaseListAdapter<CompanyData, ItemHorizontalCompanyBinding>(
+class RecommendCompanyAdapter(private val onClick: (CompanyEntity) -> Unit) : BaseListAdapter<CompanyEntity, ItemHorizontalCompanyBinding>(
     R.layout.item_horizontal_company
 ) {
     val profileImgList: List<Int> = listOf(
@@ -42,11 +43,12 @@ class RecommendCompanyAdapter(private val onClick: (CompanyData) -> Unit) : Base
         R.drawable.img_company30,
     )
 
-    override fun action(item: CompanyData, binding: ItemHorizontalCompanyBinding) {
-        binding.tvTitle.text = item.name
+    override fun action(item: CompanyEntity, binding: ItemHorizontalCompanyBinding) {
+        binding.tvTitle.text = item.companyTitle
         binding.tvAddress.text = item.address
         binding.ivLogo.clipToOutline = true
-        val iamgeIdx = item.idx +123456 % profileImgList.size
+        binding.tvEmploy.text = item.jobType
+        val iamgeIdx = (item.id.toInt() +123456) % profileImgList.size
         binding.ivLogo.setImageResource(profileImgList[iamgeIdx])
 
         binding.root.setOnClickListener { onClick(item) }
