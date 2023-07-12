@@ -15,17 +15,5 @@ import dgsw.kr.dotted.R
  */
 class HomeFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
 
 }
