@@ -1,27 +1,22 @@
 package dgsw.kr.dotted.home.view
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import dgsw.kr.dotted.R
+import dgsw.kr.dotted.base.BaseFragment
+import dgsw.kr.dotted.databinding.FragmentHomeBinding
+import dgsw.kr.dotted.home.vm.homeViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>(R.layout.fragment_home) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override val viewModel: homeViewModel by viewModels()
+    override fun start() {
+        binding.rvRecommandCompany.adapter = viewModel.recommendCompanyAdapter
+        binding.rvRecommandCompany.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        binding.rvCompany.adapter = viewModel.verticalCompanyAdapter
+        binding.rvCompany.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        viewModel.recommendCompanyAdapter.submitList(viewModel.mapCompanyList)
+        viewModel.verticalCompanyAdapter.submitList(viewModel.mapCompanyList)
     }
 
 }

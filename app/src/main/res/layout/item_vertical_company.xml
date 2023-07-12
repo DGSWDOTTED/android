@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
@@ -24,37 +24,52 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:text="DOTTED"
-            android:fontFamily="@font/pretendard_bold"
             android:maxLines="1"
             android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@id/iv_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendard_bold"
+            app:layout_constraintStart_toEndOf="@id/iv_logo"
+            app:layout_constraintBottom_toTopOf="@id/line_title"
+            android:layout_marginBottom="5dp"
             />
+
+        <View
+            android:id="@+id/line_title"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+            app:layout_constraintStart_toEndOf="@id/iv_logo"
+            app:layout_constraintTop_toTopOf="@id/iv_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <TextView
             android:id="@+id/tv_address"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:text="대구광역시 달성군 구지면 창리로11길 93"
             android:textSize="10dp"
-            android:fontFamily="@font/pretendard_regular"
-            android:textColor="@color/textGray"
             android:maxLines="1"
             android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="@id/iv_logo"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="@color/textGray"
             android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@id/iv_logo"
+            app:layout_constraintTop_toTopOf="@id/line_title"
+            app:layout_constraintBottom_toBottomOf="@id/line_title"
             />
+
         <TextView
             android:id="@+id/tv_employ"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:text="코딩 잘하시는 분 구합니다."
             android:textSize="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:fontFamily="@font/pretendard_medium"
             app:layout_constraintTop_toBottomOf="@id/tv_address"
             android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_logo"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
