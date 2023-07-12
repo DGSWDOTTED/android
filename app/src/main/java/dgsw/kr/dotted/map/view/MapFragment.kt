@@ -57,6 +57,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
 
                     override fun onClicked() {
 
+                        sharedViewModel.id = company.id
                         val action = R.id.action_mapFragment_to_detailFragment
                         findNavController().navigate(action)
 
@@ -91,7 +92,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         database = CompanyDatabase.getInstance(requireContext().applicationContext)!!
 
         lifecycleScope.launch(Dispatchers.IO) {
-            mapCompanyList = database.companyDao().getAllCompany()
+            mapCompanyList = database.companyDao().getCompanySortedByXY(128.41446498864, 35.662090445596)
             launch(Dispatchers.Main) {
                 mapCompanyAdapter.submitList(mapCompanyList)
             }
@@ -108,6 +109,9 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             adapter = mapCompanyAdapter
         }
 
+        binding.searchEdtxt.setOnClickListener{
+            findNavController().navigate(R.id.action_mapFragment_to_searchFragment)
+        }
         Log.d("도티드","start - ${viewModel.locationSource.lastLocation}")
 
     }

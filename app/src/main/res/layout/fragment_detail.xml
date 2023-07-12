@@ -32,8 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="@font/pretendard_semibold"
+                android:textColor="@color/black"
                 android:text="나노전자"
-                android:textSize="30dp" />
+                android:textSize="27dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,12 +54,13 @@
                 android:fontFamily="@font/pretendard_medium"
                 />
 
-            <View
+            <ImageView
                 android:id="@+id/companyPicture"
                 android:layout_width="match_parent"
                 android:layout_height="229dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_rectangle"
+                android:background="@drawable/bg_image_radius"
+                android:scaleType="centerCrop"
                 android:backgroundTint="#9F9F9F" />
 
             <View
