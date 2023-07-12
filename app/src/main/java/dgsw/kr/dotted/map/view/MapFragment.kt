@@ -2,10 +2,6 @@ package dgsw.kr.dotted.map.view
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.map.LocationTrackingMode
@@ -14,7 +10,6 @@ import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.util.FusedLocationSource
 import dgsw.kr.dotted.R
 import dgsw.kr.dotted.base.BaseFragment
-import dgsw.kr.dotted.base.BaseViewModel
 import dgsw.kr.dotted.databinding.FragmentMapBinding
 import dgsw.kr.dotted.map.vm.MapViewModel
 

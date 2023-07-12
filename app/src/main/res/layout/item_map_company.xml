@@ -35,7 +35,7 @@
 
             android:fontFamily="@font/pretendard_regular"
             android:text="경기도 화성시 마도면 청원산단1길 10-9 나노전자"
-            android:textColor="#9F9F9F"
+            android:textColor="@color/textGray"
             android:textSize="11dp"
             android:paddingEnd="10dp"
             android:maxLines="1"
