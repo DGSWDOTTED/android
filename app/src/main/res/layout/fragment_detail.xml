@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".detail.view.DetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="FragmentDetail"
+            type="dgsw.kr.dotted.detail.view.DetailFragment" />
+    </data>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backTo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/companyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="나노전자"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/companyAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="경기도 화성시 마도면 청원산단1길 10-9 나노전자" />
+
+            <View
+                android:id="@+id/companyPicture"
+                android:layout_width="match_parent"
+                android:layout_height="229dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_rectangle"
+                android:backgroundTint="#9F9F9F" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/rounded_rectangle"
+                android:backgroundTint="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_shape" />
+
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="고용 형태" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/companyPayType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상용직"
+                    android:textColor="#A9A9A9" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/rounded_rectangle"
+                    android:backgroundTint="#A9A9A9" />
+
+                <TextView
+                    android:id="@+id/companyPay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="시급 1만원"
+                    android:textColor="#A9A9A9" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_company" />
+
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="기업 형태" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/companyScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="협회, 단체"
+                android:textColor="#A9A9A9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_role" />
+
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:text="모집 직종" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/companyRole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="섬유·의복 분야 단순 종사원"
+                android:textColor="#A9A9A9" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_master" />
+
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="담당 기관" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/companyMaster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경기 지역 본부"
+                android:textColor="#A9A9A9" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
