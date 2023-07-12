@@ -8,27 +8,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp">
         <ImageView
             android:id="@+id/iv_logo"
-            android:layout_width="168dp"
-            android:layout_height="108dp"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
             android:src="@drawable/ic_text_dotted"
+            android:background="@drawable/bg_image_radius"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:paddingHorizontal="10dp"
             />
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:text="DOTTED"
             android:fontFamily="@font/pretendard_bold"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/iv_logo"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_logo"
             android:layout_marginTop="5dp"
             />
         <TextView
@@ -36,7 +38,7 @@
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:text="대구광역시 달성군 구지면 창리로11길 93"
-            android:textSize="10dp"
+            android:textSize="12dp"
             android:fontFamily="@font/pretendard_regular"
             android:textColor="@color/textGray"
             android:maxLines="1"
@@ -50,11 +52,11 @@
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:text="코딩 잘하시는 분 구합니다."
-            android:textSize="10dp"
+            android:textSize="12dp"
             android:fontFamily="@font/pretendard_medium"
             app:layout_constraintTop_toBottomOf="@id/tv_address"
             android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_logo"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
