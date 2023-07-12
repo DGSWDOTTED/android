@@ -5,7 +5,6 @@ import android.os.Bundle
 import dgsw.kr.dotted.R
 import dgsw.kr.dotted.detail.view.DetailFragment
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
