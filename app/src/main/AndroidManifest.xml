@@ -5,39 +5,42 @@
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        tools:node="replace"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
+        tools:node="merge"
         tools:targetApi="31">
-
         <activity
-            android:name="dgsw.kr.dotted.home.view.SplashActivity"
+            android:name=".search.view.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.view.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
 
         <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID" tools:replace="android:value"
-            android:value="smyor3spg0"/>
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="smyor3spg0"
+            tools:replace="android:value" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="dgsw.kr.dotted.home.view.MainActivity"
+            android:name=".home.view.MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
