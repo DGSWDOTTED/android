@@ -15,9 +15,12 @@ interface CompanyDao {
     suspend fun getAllCompany() : List<CompanyEntity>
 
 
-    @Query("SELECT * FROM Company WHERE companyTitle Like :keyword")
+    @Query("SELECT * FROM Company WHERE companyTitle Like :keyword OR address Like :keyword")
     suspend fun searchCompany(keyword : String): List<CompanyEntity>
 
     @Query("DELETE from Company")
     suspend fun deleteAll()
+
+    @Query("SELECT * from Company WHERE id == :id")
+    suspend fun getCompanyById(id : String) : CompanyEntity
 }

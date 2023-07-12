@@ -48,7 +48,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="경기도 화성시 마도면 청원산단1길 10-9 나노전자" />
+                android:text="경기도 화성시 마도면 청원산단1길 10-9 나노전자"
+                android:textColor="@color/textGray"
+                android:fontFamily="@font/pretendard_medium"
+                />
 
             <View
                 android:id="@+id/companyPicture"
@@ -80,7 +83,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="고용 형태" />
+                    android:text="고용 형태"
+                    android:fontFamily="@font/pretendard_medium"
+                    />
 
 
             </LinearLayout>
@@ -95,6 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="상용직"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/pretendard_medium"
                     android:textColor="#A9A9A9" />
 
                 <View
@@ -112,6 +119,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="시급 1만원"
+                    android:fontFamily="@font/pretendard_medium"
+
                     android:textColor="#A9A9A9" />
 
             </LinearLayout>
@@ -133,7 +142,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="기업 형태" />
+                    android:text="기업 형태"
+                    android:fontFamily="@font/pretendard_medium"
+                    />
 
 
             </LinearLayout>
@@ -144,7 +155,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="협회, 단체"
-                android:textColor="#A9A9A9" />
+                android:textColor="#A9A9A9"
+                android:fontFamily="@font/pretendard_medium"
+                android:layout_marginStart="5dp"
+
+                />
 
 
             <LinearLayout
@@ -163,7 +178,9 @@
                     android:layout_width="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content"
-                    android:text="모집 직종" />
+                    android:text="모집 직종"
+                    android:fontFamily="@font/pretendard_medium"
+                    />
 
 
             </LinearLayout>
@@ -174,7 +191,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="섬유·의복 분야 단순 종사원"
-                android:textColor="#A9A9A9" />
+                android:textColor="#A9A9A9"
+                android:fontFamily="@font/pretendard_medium"
+                android:layout_marginStart="5dp"
+
+                />
 
 
             <LinearLayout
@@ -193,7 +214,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="담당 기관" />
+                    android:text="담당 기관"
+                    android:fontFamily="@font/pretendard_medium"
+                    />
 
 
             </LinearLayout>
@@ -204,7 +227,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="경기 지역 본부"
-                android:textColor="#A9A9A9" />
+                android:textColor="#A9A9A9"
+                android:fontFamily="@font/pretendard_medium"
+                android:layout_marginStart="5dp"
+                />
 
 
         </LinearLayout>
